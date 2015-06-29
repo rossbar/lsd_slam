@@ -1,0 +1,15 @@
+<!-- Launch file for consolidating machinery for playing back one of the
+     bagfiles -->
+
+<launch>
+  <!-- Arguments -->
+  <arg name="/image" default="/image_raw"/>
+  <arg name="/camera_info" default="/camera_info"/>
+
+  <!-- LSD-SLAM node -->
+  <node pkg="lsd_slam_core" type="live_slam" name="lsdslam" required="true"
+        args="image:=/image_raw camera_info:=/camera_info"/>
+
+  <!-- Visualization node -->
+  <node pkg="lsd_slam_viewer" type="viewer" name="viewer" required="true"/>
+</launch>
