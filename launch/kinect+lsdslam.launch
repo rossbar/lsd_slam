@@ -1,0 +1,14 @@
+<!-- Launch file for consolidating machinery for playing back one of the
+     bagfiles -->
+
+<launch>
+  <!-- Automatically launch the Kinect using freenect drivers -->
+  <include file="$(find freenect_launch)/launch/freenect.launch"/>
+
+  <!-- LSD-SLAM node -->
+  <node pkg="lsd_slam_core" type="live_slam" name="lsdslam" required="true"
+        args="image:=/camera/rgb/image_rect_color camera_info:=/camera/rgb/camera_info"/>
+
+  <!-- Visualization node -->
+  <node pkg="lsd_slam_viewer" type="viewer" name="viewer" required="true"/>
+</launch>
